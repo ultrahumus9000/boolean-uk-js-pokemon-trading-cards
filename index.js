@@ -34,6 +34,7 @@ function displaycard(num){
         let h2El = document.createElement('h2')
         let imgEl = document.createElement('img')
         let divEl = document.createElement('div')
+        let gameEl = document.createElement('span')
         //set class
         articleEl.setAttribute('class', 'card')
         h2El.setAttribute('class', 'card--title')
@@ -51,13 +52,19 @@ function displaycard(num){
                 pEl.innerText = `${item.stat.name.toUpperCase()}: ${item.base_stat}`
                 divEl.append(pEl)
             }
-
+            const gameIndices = data[i].game_indices
+            for(const indice of gameIndices ){
+               gameEl.innerText = gameEl.innerText + indice.version.name +'/ '
+               divEl.append(
+                gameEl
+               )
+            }
         let sectionEl = document.querySelector('section')
         sectionEl.append(articleEl)
         articleEl.append(h2El, imgEl,divEl)
     }   
 }
-displaycard(10)
+displaycard(20)
 
  
 
